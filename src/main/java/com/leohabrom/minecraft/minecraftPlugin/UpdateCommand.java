@@ -30,7 +30,7 @@ public class UpdateCommand implements CommandExecutor {
                 try {
                     commandSender.sendMessage("Creating backup");
                     Files.copy(pluginJar.toPath(), new File(pluginFolder,"backup").toPath(), StandardCopyOption.REPLACE_EXISTING);
-                    commandSender.sendMessage("Backup complete");
+                    commandSender.sendMessage("Backup complete :D");
                 } catch (IOException e) {
                     commandSender.sendMessage("Failed creating backup, aborting");
                     return false;
