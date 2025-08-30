@@ -2,3 +2,6 @@ name: MinecraftPlugin
 version: '1.0-SNAPSHOT'
 main: com.leohabrom.minecraft.minecraftPlugin.MinecraftPlugin
 api-version: '1.21'
+commands:
+  test:
+    description: test
