@@ -2,6 +2,3 @@ name: MinecraftPlugin
 version: '1.0-SNAPSHOT'
 main: com.leohabrom.minecraft.minecraftPlugin.MinecraftPlugin
 api-version: '1.21'
-commands:
-  update2:
-    description: Replaces the plugin with the latest build on github
