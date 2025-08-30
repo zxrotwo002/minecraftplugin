@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 
 import java.io.*;
 import java.net.Socket;
+import java.time.LocalDateTime;
 import java.util.logging.Level;
 
 public class GithubNotifier implements Runnable {
@@ -34,7 +35,8 @@ public class GithubNotifier implements Runnable {
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
             String line;
             while ((line = reader.readLine())!=null) {
-                Bukkit.getServer().broadcast(Component.text(line));
+                String finalLine = line;
+                Bukkit.getServer().getOnlinePlayers().stream().findFirst().ifPresent(player -> player.sendMessage(finalLine + LocalDateTime.now()));
             }
         } catch (IOException e) {
             MinecraftPlugin.getInstance().getLogger().log(Level.WARNING,e.getMessage(),e.getCause());

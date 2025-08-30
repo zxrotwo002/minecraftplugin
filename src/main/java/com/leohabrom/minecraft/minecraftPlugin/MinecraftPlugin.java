@@ -20,7 +20,6 @@ public final class MinecraftPlugin extends JavaPlugin {
         // Plugin startup logic
         getLogger().log(Level.INFO,"Hello from MinecraftPlugin");
         getServer().broadcast(Component.text("Test"));
-        getServer().getOnlinePlayers().stream().findFirst().ifPresent(player -> player.sendMessage("Test"));
         new GithubNotifier();
     }
 
