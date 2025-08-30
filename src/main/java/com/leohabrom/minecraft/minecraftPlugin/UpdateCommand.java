@@ -28,24 +28,28 @@ public class UpdateCommand implements CommandExecutor {
             if (optionalFile.isPresent()) {
                 File pluginJar = optionalFile.get();
                 try {
+                    commandSender.sendMessage("Creating backup");
                     Files.copy(pluginJar.toPath(), new File(pluginFolder,"backup").toPath(), StandardCopyOption.REPLACE_EXISTING);
+                    commandSender.sendMessage("Backup complete");
                 } catch (IOException e) {
                     commandSender.sendMessage("Failed creating backup, aborting");
                     return false;
                 }
                 try {
+                    commandSender.sendMessage("Replacing old plugin-jar");
                     InputStream in = new URL(downloadLink).openStream();
                     Files.copy(in, pluginJar.toPath(),StandardCopyOption.REPLACE_EXISTING);
+                    commandSender.sendMessage("Replacing complete");
                 } catch (IOException e) {
                     commandSender.sendMessage("Error occurred, restoring backup");
                     try {
                         Files.copy(new File(pluginFolder,"backup").toPath(),pluginJar.toPath(),StandardCopyOption.REPLACE_EXISTING);
+                        commandSender.sendMessage("Backup restored");
                     } catch (IOException ex) {
                         commandSender.sendMessage("Everything failed, your plugin is now corrupt");
                         commandSender.sendMessage("Please restore manually");
                         return false;
                     }
-                    return true;
                 }
                 Bukkit.broadcast(Component.text("Reloading server"));
                 Bukkit.getServer().reload();
