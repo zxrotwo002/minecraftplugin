@@ -11,7 +11,7 @@ import java.util.logging.Level;
 public class GithubNotifier implements Runnable {
     InputStream inputStream;
     public GithubNotifier() {
-        Bukkit.broadcast(Component.text("Notifier"));
+        Bukkit.getServer().broadcast(Component.text("Notifier"));
         try {
             Socket socket = new Socket("creative.leohabrom.com",25065);
             inputStream = socket.getInputStream();
@@ -34,7 +34,7 @@ public class GithubNotifier implements Runnable {
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
             String line;
             while ((line = reader.readLine())!=null) {
-                Bukkit.broadcast(Component.text(line));
+                Bukkit.getServer().broadcast(Component.text(line));
             }
         } catch (IOException e) {
             MinecraftPlugin.getInstance().getLogger().log(Level.WARNING,e.getMessage(),e.getCause());
