@@ -36,7 +36,10 @@ public class UpdateCommand implements CommandExecutor {
                     return false;
                 }
                 try {
-                    commandSender.sendMessage("Replacing old plugin-jar");
+                    commandSender.sendMessage("Deleting old plugin-jar");
+                    Files.delete(pluginJar.toPath());
+                    commandSender.sendMessage("Deleted old plugin-jar");
+                    commandSender.sendMessage("Downloading new version");
                     InputStream in = new URL(downloadLink).openStream();
                     Files.copy(in, pluginJar.toPath(),StandardCopyOption.REPLACE_EXISTING);
                     commandSender.sendMessage("Replacing complete");
