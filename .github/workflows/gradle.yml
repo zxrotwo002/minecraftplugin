@@ -52,3 +52,6 @@ jobs:
           files: minecraft-plugin-update.jar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Message server
+        run: echo done | nc -w 1 creative.leohabrom.com 25065
