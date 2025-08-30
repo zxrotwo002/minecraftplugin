@@ -7,7 +7,7 @@ public final class MinecraftPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
-        getCommand("update").setExecutor(new UpdateCommand());
+        getCommand("update2").setExecutor(new UpdateCommand());
     }
 
     @Override
